@@ -1,0 +1,24 @@
+title: Second Brain
+description: A framework for a second brain that an AI agent keeps for you. The system design, one way to run it, and the research behind both.
+
+# Where the site lives. A project site is served at https://AlexSendula.github.io/<repo>/,
+# so baseurl is "/<repo>" (the repository name). Use baseurl: "" for a user site
+# (AlexSendula.github.io) or a custom domain.
+url: "https://AlexSendula.github.io"
+baseurl: "/second-brain"
+
+# GitHub Pages runs Jekyll itself; there is no build step and no plugin.
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+permalink: pretty
+
+# Not part of the site.
+exclude:
+  - README.md
+  - LICENSE
+  - PRODUCT.md
+  - FROZEN-SPEC-CHANGES.md
+  - DESIGN.md
+  - .impeccable

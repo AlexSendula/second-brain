@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
+<title>{{ page.title | escape }}</title>
+<meta name="description" content="{{ site.description | escape }}">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='5' fill='%23a3402c'/%3E%3C/svg%3E">
+<link rel="preload" href="{{ '/assets/fonts/geist-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('theme');
+    if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+  } catch (e) { /* storage blocked: follow the system */ }
+})();
+</script>
+<link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}">
+<script src="{{ '/assets/site.js' | relative_url }}" defer></script>
+</head>
+{%- assign home = false -%}
+{%- if page.url == '/' -%}{%- assign home = true -%}{%- endif %}
+<body>
+<a class="skip" href="#content">Skip to the text</a>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="{{ '/' | relative_url }}"{% if home %} aria-current="page"{% endif %}><span class="dot" aria-hidden="true"></span>{{ site.title }}</a>
+    <span class="version" title="The system design is frozen as system-v1">system-v1</span>
+    <nav class="site-nav" aria-label="Site">
+      <a href="{{ '/system-design/' | relative_url }}"{% if page.url == '/system-design/' %} aria-current="page"{% endif %}>System design</a>
+      <a href="{{ '/implementation/' | relative_url }}"{% if page.url == '/implementation/' %} aria-current="page"{% endif %}>Implementation</a>
+      <a href="{{ '/#research' | relative_url }}"{% if page.url contains '/research/' %} aria-current="true"{% endif %}>Research</a>
+      <a class="gh" href="https://github.com/AlexSendula/second-brain">GitHub</a>
+      <button class="theme" type="button" hidden aria-label="Theme: System" title="Theme: System">
+        <svg class="i-system" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.5"/><path class="fill" d="M8 2.5a5.5 5.5 0 0 1 0 11z"/></svg>
+        <svg class="i-light" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" hidden><circle cx="8" cy="8" r="2.6"/><path d="M8 1.4v1.9M8 12.7v1.9M1.4 8h1.9M12.7 8h1.9M3.3 3.3l1.35 1.35M12.7 3.3l-1.35 1.35M12.7 12.7l-1.35-1.35M3.3 12.7l1.35-1.35"/></svg>
+        <svg class="i-dark" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" hidden><path d="M13.775 8.539A5.8 5.8 0 1 1 7.461 2.225A4.6 4.6 0 0 0 13.775 8.539Z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+{% comment %} Every page and its sections, from _data/nav.yml. Written twice, as the sidebar (wide screens) and the Contents box (narrow); the CSS shows one of them. {% endcomment %}
+{%- capture contents -%}
+<ul class="pages">
+{%- assign group = nil -%}
+{%- for p in site.data.nav -%}
+{%- if p.group != group %}
+</ul>
+<p class="group">{{ p.group }}</p>
+<ul class="pages">
+{%- assign group = p.group -%}
+{%- endif %}
+<li><a class="page" href="{{ p.url | relative_url }}"{% if p.url == page.url %} aria-current="page"{% endif %}>{{ p.label | default: p.title }}</a>
+{%- if p.sections %}
+<ol>
+{%- for s in p.sections %}
+<li><a href="{{ p.url | relative_url }}#{{ s.id }}"><span class="n">{{ s.n }}</span><span>{{ s.title }}</span></a></li>
+{%- endfor %}
+</ol>
+{%- endif -%}
+</li>
+{%- endfor %}
+</ul>
+{%- endcapture %}
+<div class="shell">
+  <nav class="rail" aria-label="Contents">
+{{ contents }}
+  </nav>
+{%- unless home %}
+  <details class="toc">
+    <summary><span class="toc-name">Contents</span><span class="toc-here"></span></summary>
+    <nav aria-label="Contents">
+{{ contents }}
+    </nav>
+  </details>
+{%- endunless %}
+  <main id="content" class="main{% if home %} home{% endif %}" tabindex="-1">
+    <article class="prose">
+{%- comment %} kramdown writes an empty table header as cells holding a no-break space (U+00A0, below). Those tables are label and value, so the row goes. {% endcomment -%}
+{%- capture blank_head %}<thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+{% endcapture %}
+{{ content | replace: blank_head, '' }}
+    </article>
+{% assign here = site.data.nav | where: 'url', page.url | first %}
+{%- if here.prev or here.next %}
+    <nav class="pager" aria-label="More pages">
+{%- if here.prev %}{% assign p = site.data.nav | where: 'url', here.prev | first %}
+      <a class="prev" href="{{ p.url | relative_url }}" aria-label="Previous: {{ p.title | escape }}">{{ p.title }}</a>
+{%- endif %}
+{%- if here.next %}{% assign n = site.data.nav | where: 'url', here.next | first %}
+      <a class="next" href="{{ n.url | relative_url }}" aria-label="Next: {{ n.title | escape }}">{{ n.title }}</a>
+{%- endif %}
+    </nav>
+{%- endif %}
+
+    <footer class="foot">
+      <a class="brand" href="{{ '/' | relative_url }}"><span class="dot" aria-hidden="true"></span>{{ site.title }}</a>
+      <a href="https://github.com/AlexSendula/second-brain/blob/main/LICENSE">MIT licence</a>
+      <a href="https://github.com/AlexSendula/second-brain">github.com/AlexSendula/second-brain</a>
+    </footer>
+  </main>
+</div>
+</body>
+</html>

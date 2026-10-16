@@ -1,0 +1,85 @@
+# Reading order. Drives the contents sidebar and the Previous / Next links at the end of each page.
+# sections: each page's h2 headings. id is the id kramdown writes for the heading;
+# n is the section number, set in its own column. Change a heading, change it here too.
+- url: /
+  title: Second Brain
+  label: Home
+  next: /using-it/
+  sections:
+    - { id: where-to-start, title: Where to start }
+    - { id: routines-cord, title: Routines (CORD) }
+    - { id: kinds-of-things-in-a-life, title: Kinds of things in a life }
+    - { id: the-vault, title: The vault }
+    - { id: ready-to-use, title: Ready to use }
+    - { id: research, title: Research }
+    - { id: good-to-know, title: Good to know }
+- url: /using-it/
+  title: Using it
+  prev: /
+  next: /system-design/
+  sections:
+    - { id: start-a-session, title: Start a session }
+    - { id: get-things-in, title: Get things in }
+    - { id: ask, title: Ask }
+    - { id: plan-your-week, title: Plan your week }
+    - { id: do-and-mark-it-done, title: "Do, and mark it done" }
+    - { id: review, title: Review }
+    - { id: after-a-break, title: After a break }
+    - { id: a-week-with-it, title: A week with it }
+    - { id: it-learns-your-ways, title: It learns your ways }
+    - { id: go-deeper, title: Go deeper }
+    - { id: in-the-authors-implementation, title: "In the author's implementation" }
+- url: /system-design/
+  title: System design
+  prev: /using-it/
+  next: /implementation/
+  sections:
+    - { id: 1-definition, n: 1, title: Definition }
+    - { id: 2-principles, n: 2, title: Principles }
+    - { id: 3-building-blocks, n: 3, title: Building blocks }
+    - { id: 4-routines-cord, n: 4, title: Routines (CORD) }
+    - { id: 5-the-vault, n: 5, title: The vault }
+    - { id: 6-the-agent-and-memory, n: 6, title: The agent and memory }
+    - { id: 7-what-this-replaced, n: 7, title: What this replaced }
+    - { id: 8-implementation, n: 8, title: Implementation }
+- url: /implementation/
+  title: Implementation
+  prev: /system-design/
+  next: /research/2026-10-11-landscape-survey/
+  sections:
+    - { id: 1-setup, n: 1, title: Setup }
+    - { id: 2-reference-format, n: 2, title: Reference format }
+    - { id: 3-deviations-from-system-v1, n: 3, title: Deviations from system v1 }
+- url: /research/2026-10-11-landscape-survey/
+  title: Landscape survey
+  group: Research
+  prev: /implementation/
+  next: /research/2026-10-13-agent-memory-research/
+  sections:
+    - { id: 1-markdown-native-uis-over-a-vault, n: 1, title: Markdown-native UIs over a vault }
+    - { id: 2-open-source-task-managers, n: 2, title: Open-source task managers }
+    - { id: 3-phone-capture-with-no-laptop-running, n: 3, title: Phone capture with no laptop running }
+    - { id: 4-agent-memory-layers, n: 4, title: Agent memory layers }
+    - { id: 5-existing-ai-agent--vault-projects, n: 5, title: 'Existing "AI agent + vault" projects' }
+    - { id: what-this-means-for-the-design, title: What this means for the design }
+- url: /research/2026-10-13-agent-memory-research/
+  title: Agent memory research
+  group: Research
+  prev: /research/2026-10-11-landscape-survey/
+  next: /research/2026-10-13-obsidian-plugins/
+  sections:
+    - { id: 1-result, n: 1, title: Result }
+    - { id: 2-the-criteria, n: 2, title: The criteria }
+    - { id: 3-comparison-tables, n: 3, title: Comparison tables }
+    - { id: 4-patterns-how-a-memory-can-relate-to-a-vault, n: 4, title: "Patterns: how a memory can relate to a vault" }
+    - { id: 5-recommendation, n: 5, title: Recommendation }
+    - { id: 6-sources, n: 6, title: Sources }
+- url: /research/2026-10-13-obsidian-plugins/
+  title: Obsidian plugins
+  group: Research
+  prev: /research/2026-10-13-agent-memory-research/
+  sections:
+    - { id: trust-model, title: Trust model }
+    - { id: bases-core-in-2026, title: Bases (core) in 2026 }
+    - { id: candidates, title: Candidates }
+    - { id: recommended-set, title: Recommended set }

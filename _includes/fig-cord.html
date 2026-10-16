@@ -1,0 +1,54 @@
+<figure class="fig cord">
+<div class="cord-frame">
+<p class="fig-key"><span class="key"><i></i>The agent</span><span class="key you"><i></i>You</span><span class="key both"><i></i>Both</span></p>
+<div class="cord-body">
+<ol class="cord-steps">
+<li class="step you">
+<div class="step-head"><span class="badge" aria-hidden="true">C</span><p class="step-title">Capture</p><a class="ref" href="{{ '/system-design/#41-capture' | relative_url }}" aria-label="Section 4.1">4.1</a></div>
+<p class="who">You</p>
+<p class="says">You never say where something goes. One sentence is enough.</p>
+<div class="panel chat"><p class="bubble">talked to Sam, the website deadline moved to 1 December</p></div>
+</li>
+<li class="step">
+<svg class="arrow down" viewBox="0 0 14 26" aria-hidden="true" focusable="false"><path d="M7 0V26M2.99 20.27L7 26L11.01 20.27"/></svg>
+<div class="step-head"><span class="badge" aria-hidden="true">O</span><p class="step-title">Organize</p><a class="ref" href="{{ '/system-design/#42-organize-the-agents-job' | relative_url }}" aria-label="Section 4.2">4.2</a></div>
+<p class="who">The agent</p>
+<p class="says">Organizing is the agent's job.</p>
+<div class="panel"><ul class="files">
+<li><span class="path">Conversations/2026/</span><span class="name">2026-10-12 Sam about the website.md</span><span class="tag">new note</span></li>
+<li><span class="path">Projects/Website for Sam/</span><span class="name">Website for Sam.md</span><span class="tag">Now and Log</span></li>
+</ul></div>
+</li>
+<li class="step both">
+<svg class="arrow down" viewBox="0 0 14 26" aria-hidden="true" focusable="false"><path d="M7 0V26M2.99 20.27L7 26L11.01 20.27"/></svg>
+<div class="step-head"><span class="badge" aria-hidden="true">R</span><p class="step-title">Review</p><a class="ref" href="{{ '/system-design/#45-reviews' | relative_url }}" aria-label="Section 4.5">4.5</a></div>
+<p class="who">The agent starts, you decide</p>
+<p class="says">The system starts the review; you make the decisions.</p>
+<div class="panel">
+<p class="panel-title">Weekly review</p>
+<p class="review-step"><b aria-hidden="true">3</b>Projects: active ones still active and with a clear next step?</p>
+<p class="proj">Website for Sam<span class="pill">active</span></p>
+</div>
+</li>
+<li class="step you">
+<svg class="arrow down" viewBox="0 0 14 26" aria-hidden="true" focusable="false"><path d="M7 0V26M2.99 20.27L7 26L11.01 20.27"/></svg>
+<div class="step-head"><span class="badge" aria-hidden="true">D</span><p class="step-title">Do</p><a class="ref" href="{{ '/system-design/#48-do' | relative_url }}" aria-label="Section 4.8">4.8</a></div>
+<p class="who">You</p>
+<p class="says">Done: tick it off or tell the agent.</p>
+<div class="panel"><ul class="tasks">
+<li class="done"><span class="box" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.2l2 2L8 3"/></svg></span><span class="sr">Done: </span>Choose hosting for Sam's site</li>
+</ul></div>
+</li>
+</ol>
+<svg class="arrow a1" viewBox="0 0 56 14" aria-hidden="true" focusable="false"><path d="M0 7H56M50.27 2.99L56 7L50.27 11.01"/></svg>
+<svg class="arrow a2" viewBox="0 0 14 36" aria-hidden="true" focusable="false"><path d="M7 0V36M2.99 30.27L7 36L11.01 30.27"/></svg>
+<svg class="arrow a3" viewBox="0 0 56 14" aria-hidden="true" focusable="false"><path d="M56 7H0M5.73 2.99L0 7L5.73 11.01"/></svg>
+<svg class="arrow a4" viewBox="0 0 14 36" aria-hidden="true" focusable="false"><path class="wide" d="M7 36V0M2.99 5.73L7 0L11.01 5.73"/><path class="narrow" d="M0 18H14M8.27 13.99L14 18L8.27 22.01"/></svg>
+</div>
+</div>
+{%- if page.url == '/' %}
+<figcaption class="cap"><span class="fig-n"></span>Capture, Organize, Review, Do, and round again, with one conversation followed through. Restated from <a href="{{ '/system-design/#4-routines-cord' | relative_url }}">section 4</a> of the system design; the example is the conversation in section 4.3, filed into the vault of section 5.1.</figcaption>
+{%- else %}
+<figcaption class="cap"><span class="fig-n"></span>The routines of this section as one cycle: Capture, Organize, Review, Do, and round again. The example is the conversation in <a href="#43-conversations">section 4.3</a>, filed into the vault of <a href="#51-layout">section 5.1</a>.</figcaption>
+{%- endif %}
+</figure>
